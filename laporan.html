@@ -35,7 +35,7 @@
       </div>
     </nav>
   
-  <div class="container fade-in d-flex justify-content-center align-items-center min-vh-100">
+  <div class="container fade-in d-flex justify-content-center align-items-center min-vh-100 mt-5">
     <div class="col-lg-6 col-md-8 col-sm-11">
   
       <div class="card lapor-card p-4">
@@ -47,11 +47,23 @@
   
         <hr class="mb-4">
   
-        <form>
+        <form id="LaporanForm">
+          <!-- Nama -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Nama</label>
+            <input type="text" id="nama" class="form-control" placeholder="Tuliskan Nama Anda">
+          </div>
+          
+          <!-- Title -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Kelas</label>
+            <input type="text" id="kelas" class="form-control" placeholder="Tuliskan Kelas Anda">
+          </div>
+          
           <!-- Title -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Title</label>
-            <input type="text" class="form-control" placeholder="Brief summary of the issue...">
+            <input type="text" id="judul" class="form-control" placeholder="Brief summary of the issue...">
           </div>
   
           <!-- Category -->
@@ -69,13 +81,13 @@
           <!-- Location -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Location</label>
-            <input type="text" class="form-control" placeholder="Where did this happen?">
+            <input type="text" id="lokasi" class="form-control" placeholder="Where did this happen?">
           </div>
   
           <!-- Description -->
           <div class="mb-4">
             <label class="form-label fw-semibold">Description</label>
-            <textarea class="form-control" rows="4" placeholder="Describe exactly what happened..."></textarea>
+            <textarea class="form-control" id="deskripsi" rows="4" placeholder="Describe exactly what happened..."></textarea>
           </div>
   
           <!-- Buttons -->
@@ -97,5 +109,7 @@
     </div>
   </div>
   
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="script.js"></script>
   </body>
 </html>
