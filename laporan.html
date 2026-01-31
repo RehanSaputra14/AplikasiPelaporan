@@ -51,7 +51,10 @@
           <!-- Nama -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Nama</label>
-            <input type="text" id="nama" class="form-control" placeholder="Masukkan nama lengkap Anda sesuai identitas" required>
+            <input type="text" id="nama" class="form-control" placeholder="Masukkan nama lengkap Anda sesuai identitas">
+            <div class="invalid-feedback">
+              Nama wajib diisi
+            </div>
           </div>
           
           <!-- Kelas -->
@@ -90,18 +93,24 @@
               <option>XII-9</option>
               <option>XII-10</option>
             </select>
+            <div class="invalid-feedback">
+              Nama wajib diisi
+            </div>
           </div>
           
           <!-- Judul -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Judul Masalah</label>
-            <input type="text" id="judul" class="form-control" placeholder="Tuliskan judul singkat yang Menggambarkan masalah" required>
+            <input type="text" id="judul" class="form-control" placeholder="Tuliskan judul singkat yang Menggambarkan masalah">
+            <div class="invalid-feedback">
+              Nama wajib diisi
+            </div>
           </div>
   
           <!-- Category -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Kategori</label>
-            <select class="form-select" id="kategori" required>
+            <select class="form-select" id="kategori">
               <option selected disabled>Pilih Kategori</option>
               <option>Bully</option>
               <option>Kerusakan Fasilitas</option>
@@ -110,18 +119,27 @@
               <option>Kehilangan Barang</option>
               <option>Lainnya</option>
             </select>
+            <div class="invalid-feedback">
+              Nama wajib diisi
+            </div>
           </div>
   
           <!-- Location -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Lokasi</label>
-            <input type="text" id="lokasi" class="form-control" placeholder="Sebutkan lokasi terjadinya masalah secara jelas" required>
+            <input type="text" id="lokasi" class="form-control" placeholder="Sebutkan lokasi terjadinya masalah secara jelas">
+            <div class="invalid-feedback">
+              Nama wajib diisi
+            </div>
           </div>
   
           <!-- Description -->
           <div class="mb-4">
             <label class="form-label fw-semibold">Deskripsi</label>
-            <textarea class="form-control" id="deskripsi" rows="4" placeholder="Jelaskan masalah secara detail" required></textarea>
+            <textarea class="form-control" id="deskripsi" rows="4" placeholder="Jelaskan masalah secara detail"></textarea>
+            <div class="invalid-feedback">
+              Nama wajib diisi
+            </div>
           </div>
   
           <!-- Buttons -->
