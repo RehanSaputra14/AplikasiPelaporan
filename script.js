@@ -1,7 +1,8 @@
+// Untuk Menyimpan data ke EXCEL 
+// -----------------------------
 const scriptURL = "https://script.google.com/macros/s/AKfycbyoagib6o8CG-OmUGs7BchmYSNdgPd_gbvUMk6-KjsR7hLpx-2msFYUJDfbfgqKN6CeZg/exec";
 
-document.getElementById("LaporanForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+function kirimData() {
 
   const data = {
     nama: document.getElementById("nama").value,
@@ -25,4 +26,46 @@ document.getElementById("LaporanForm").addEventListener("submit", function (e) {
     alert("Gagal mengirim laporan!");
     console.error(err);
   });
+};
+
+// Untuk Required
+// -----------------------------
+document.getElementById("LaporanForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  let valid = true;
+
+  const fields = [
+    "nama",
+    "kelas",
+    "judul",
+    "kategori",
+    "lokasi",
+    "deskripsi"
+  ];
+
+  fields.forEach(id => {
+    const input = document.getElementById(id);
+
+    if (!input.value.trim()) {
+      input.classList.add("is-invalid");
+      valid = false;
+    } else {
+      input.classList.remove("is-invalid");
+    }
+  });
+
+  if (!valid) return; // STOP SUBMIT
+
+  // ✅ lanjut kirim data
+  kirimData();
 });
+
+document.querySelectorAll("#LaporanForm input, #LaporanForm select, #LaporanForm textarea")
+  .forEach(el => {
+    el.addEventListener("input", () => {
+      if (el.value.trim()) {
+        el.classList.remove("is-invalid");
+      }
+    });
+  });
