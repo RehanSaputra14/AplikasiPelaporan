@@ -1,5 +1,4 @@
 // Untuk Menyimpan data ke EXCEL 
-// -----------------------------
 const scriptURL = "https://script.google.com/macros/s/AKfycbyoagib6o8CG-OmUGs7BchmYSNdgPd_gbvUMk6-KjsR7hLpx-2msFYUJDfbfgqKN6CeZg/exec";
 
 function kirimData() {
@@ -19,6 +18,9 @@ function kirimData() {
   })
   .then(res => res.json())
   .then(() => {
+    // Simpan ke local storage
+    simpanKeLocalStorage(data);
+
     alert("Laporan berhasil dikirim. Terima kasih 🙏");
     document.getElementById("LaporanForm").reset();
   })
@@ -26,10 +28,16 @@ function kirimData() {
     alert("Gagal mengirim laporan!");
     console.error(err);
   });
-};
+}
 
-// Untuk Required
-// -----------------------------
+// fUNCTION LOCAL STORAGE
+function simpanKeLocalStorage(data) {
+  let laporan = JSON.parse(localStorage.getItem("laporan")) || [];
+  laporan.push({ ...data, waktu: new Date().toLocaleString() });
+  localStorage.setItem("laporan", JSON.stringify(laporan));
+}
+
+// UNTUK REQUIRED
 document.getElementById("LaporanForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -57,10 +65,11 @@ document.getElementById("LaporanForm").addEventListener("submit", function (e) {
 
   if (!valid) return; // STOP SUBMIT
 
-  // ✅ lanjut kirim data
+  // Kanjut kirim data
   kirimData();
 });
 
+// KOLOM KEMBALI KETIKA KOLOM SUDAH DIISI
 document.querySelectorAll("#LaporanForm input, #LaporanForm select, #LaporanForm textarea")
   .forEach(el => {
     el.addEventListener("input", () => {
