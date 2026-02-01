@@ -92,24 +92,38 @@ function tampilkanHistory() {
 
   laporan.reverse().forEach(item => {
     const card = document.createElement("div");
-    card.className = "card border-0 border-start border-3 border-primary col-md-6 history-card";
+    card.className = "col-md-12";
 
     card.innerHTML = `
-      <div class="history-content p-3">
-        <div class="history-stats d-flex align-items-center justify-content-between"> 
-          <h5 class="mb-1 text-start">${item.judul}</h5> <br>
-          <p class="mb-1 text-muted">${item.kategori}</p>
-          <div class="history-status text-success">
-            <i class="bi bi-check-circle-fill me-1"></i> Done
+      <div class="p-4 rounded-4 shadow-sm bg-white">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge border border-dark text-dark">${item.kategori}</span>
+            <small class="text-muted">${item.waktu}</small>
           </div>
+
+          <span class="badge rounded-pill bg-warning text-dark px-3 py-2">
+            <i class="bi bi-clock me-1"></i> ${item.status || "Pending"}
+          </span>
         </div>
-        <p class="mb-1 text-muted">${item.deskripsi}</p>
-        <p class="mb-1 text-muted">${item.lokasi}</p>
-        <small class="text-secondary">${item.waktu}</small>
+
+        <!-- Judul -->
+        <h4 class="fw-bold mb-2">${item.judul}</h4>
+
+        <!-- Deskripsi -->
+        <p class="text-muted mb-3">${item.deskripsi}</p>
+
+        <!-- Lokasi -->
+        <div class="d-inline-flex align-items-center gap-2 px-3 py-2 bg-light rounded-pill">
+          <i class="bi bi-geo-alt-fill text-primary"></i>
+          <span>${item.lokasi}</span>
+        </div>
       </div>
     `;
 
     container.appendChild(card);
   });
 }
+
 document.addEventListener("DOMContentLoaded", tampilkanHistory);
