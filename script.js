@@ -38,43 +38,78 @@ function simpanKeLocalStorage(data) {
 }
 
 // UNTUK REQUIRED
-document.getElementById("LaporanForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
 
-  let valid = true;
+  const form = document.getElementById("LaporanForm");
+  if (!form) return;
 
-  const fields = [
-    "nama",
-    "kelas",
-    "judul",
-    "kategori",
-    "lokasi",
-    "deskripsi"
-  ];
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  fields.forEach(id => {
-    const input = document.getElementById(id);
+    let valid = true;
 
-    if (!input.value.trim()) {
-      input.classList.add("is-invalid");
-      valid = false;
-    } else {
-      input.classList.remove("is-invalid");
-    }
-  });
+    const fields = ["nama", "kelas", "judul", "kategori", "lokasi", "deskripsi"];
 
-  if (!valid) return; // STOP SUBMIT
+    fields.forEach(id => {
+      const input = document.getElementById(id);
 
-  // Kanjut kirim data
-  kirimData();
-});
-
-// KOLOM KEMBALI KETIKA KOLOM SUDAH DIISI
-document.querySelectorAll("#LaporanForm input, #LaporanForm select, #LaporanForm textarea")
-  .forEach(el => {
-    el.addEventListener("input", () => {
-      if (el.value.trim()) {
-        el.classList.remove("is-invalid");
+      if (!input.value.trim()) {
+        input.classList.add("is-invalid");
+        valid = false;
+      } else {
+        input.classList.remove("is-invalid");
       }
     });
+
+    if (!valid) return;
+
+    kirimData();
   });
+
+  document.querySelectorAll("#LaporanForm input, #LaporanForm select, #LaporanForm textarea")
+    .forEach(el => {
+      el.addEventListener("input", () => {
+        if (el.value.trim()) {
+          el.classList.remove("is-invalid");
+        }
+      });
+    });
+
+});
+
+  
+// MENAMPILKAN HISTORY
+function tampilkanHistory() {
+  const container = document.getElementById("historyContainer");
+  container.innerHTML = "";
+
+  const laporan = JSON.parse(localStorage.getItem("laporan")) || [];
+
+  if (laporan.length === 0) {
+    container.innerHTML = "<p class='text-muted'>Belum ada laporan.</p>";
+    return;
+  }
+
+  laporan.reverse().forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card border-0 border-start border-3 border-primary col-md-6 history-card";
+
+    card.innerHTML = `
+      <div class="history-content p-3">
+        <div class="history-stats d-flex align-items-center justify-content-between"> 
+          <h5 class="mb-1 text-start">${item.judul}</h5> <br>
+          <p class="mb-1 text-muted">${item.kategori}</p>
+          <div class="history-status text-success">
+            <i class="bi bi-check-circle-fill me-1"></i> Done
+          </div>
+        </div>
+        <p class="mb-1 text-muted">${item.deskripsi}</p>
+        <p class="mb-1 text-muted">${item.lokasi}</p>
+        <small class="text-secondary">${item.waktu}</small>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+document.addEventListener("DOMContentLoaded", tampilkanHistory);
