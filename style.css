@@ -190,6 +190,16 @@
       margin-right: auto;
       color: #64748b;
     }
+    
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 90vh; /* Memastikan tinggi minimal seukuran layar */
+    }
+    
+    .content {
+      flex: 1; /* Mengambil semua ruang sisa agar footer terdorong ke bawah */
+    }
 
     footer {
       text-align: center;
@@ -197,7 +207,7 @@
       font-size: 0.9rem;
       margin: 2rem 0 0 0;
       display: fixed;
-      bottom: 0;
+      bottom: 5px;
       user-select: none;
     }
 
@@ -213,9 +223,9 @@
       }
     }
 
-/* -----------------------------------------------------
+/* ----------------------------------------------
     Halaman Laporan
-  -----------------------------------------------------*/
+-----------------------------------------------*/
 
     .container .lapor-card {
       background-color: white;
@@ -316,4 +326,3 @@
         transform: scale(1);
       }
     } 
-
