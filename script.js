@@ -93,3 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
+    
+    window.addEventListener("pageshow", function () {
+      const loadingOverlay = document.getElementById("loadingOverlay");
+      if (loadingOverlay) {
+        loadingOverlay.classList.remove("active");
+      }
+    });
