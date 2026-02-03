@@ -20,7 +20,6 @@ function kirimData() {
   .then(() => {
     // Simpan ke local storage
     simpanKeLocalStorage(data);
-
     alert("Laporan berhasil dikirim. Terima kasih 🙏");
     document.getElementById("LaporanForm").reset();
   })
@@ -76,3 +75,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+    const loadingOverlay = document.getElementById("loadingOverlay");
+  
+    function showLoading() {
+      loadingOverlay.style.display = "flex";
+    }
+  
+    function hideLoading() {
+      loadingOverlay.style.display = "none";
+    }
+  
+    document.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", function (e) {
+        if (this.getAttribute("href") !== "#") {
+          showLoading();
+        }
+      });
+    });
