@@ -31,13 +31,6 @@ function kirimData() {
   });
 }
 
-// fUNCTION LOCAL STORAGE
-function simpanKeLocalStorage(data) {
-  let laporan = JSON.parse(localStorage.getItem("laporan")) || [];
-  laporan.push({ ...data, waktu: new Date().toLocaleString() });
-  localStorage.setItem("laporan", JSON.stringify(laporan));
-}
-
 // UNTUK REQUIRED
 document.addEventListener("DOMContentLoaded", function () {
 
