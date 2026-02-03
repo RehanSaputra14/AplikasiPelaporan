@@ -20,10 +20,12 @@ function kirimData() {
   .then(() => {
     // Simpan ke local storage
     simpanKeLocalStorage(data);
+    loadingOverlay.style.display = "none";
     alert("Laporan berhasil dikirim. Terima kasih 🙏");
     document.getElementById("LaporanForm").reset();
   })
   .catch(err => {
+    loadingOverlay.style.display = "none";
     alert("Gagal mengirim laporan!");
     console.error(err);
   });
@@ -61,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (!valid) return;
-
+    loadingOverlay.style.display = "flex";
     kirimData();
   });
 
