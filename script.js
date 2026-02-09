@@ -1,6 +1,17 @@
 // Untuk Menyimpan data ke EXCEL 
 const scriptURL = "https://script.google.com/macros/s/AKfycbyoagib6o8CG-OmUGs7BchmYSNdgPd_gbvUMk6-KjsR7hLpx-2msFYUJDfbfgqKN6CeZg/exec";
 
+function getUserId() {
+  let userId = localStorage.getItem("user_id");
+
+  if (!userId) {
+    userId = "USR-" + Date.now() + "-" + Math.floor(Math.random() * 1000);
+    localStorage.setItem("user_id", userId);
+  }
+
+  return userId;
+}
+
 function kirimData() {
 
   const data = {
@@ -32,6 +43,14 @@ function kirimData() {
     alert("Gagal mengirim laporan!");
     console.error(err);
   });
+}
+
+function simpanKeLocalStorage(data) {
+  let laporan = JSON.parse(localStorage.getItem("laporanUser")) || [];
+
+  laporan.push(data);
+
+  localStorage.setItem("laporanUser", JSON.stringify(laporan));
 }
 
 // UNTUK REQUIRED
