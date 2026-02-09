@@ -1,3 +1,5 @@
+const scriptURL = "https://script.google.com/macros/s/AKfycbyoagib6o8CG-OmUGs7BchmYSNdgPd_gbvUMk6-KjsR7hLpx-2msFYUJDfbfgqKN6CeZg/exec";
+
 function tampilkanHistory() {
   const userId = localStorage.getItem("user_id");
   if (!userId) return;
