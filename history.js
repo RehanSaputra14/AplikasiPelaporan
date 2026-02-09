@@ -24,7 +24,7 @@ function tampilkanHistory() {
         card.className = "col-12";
 
         card.innerHTML = `
-          <div class="p-4 rounded-4 shadow-sm bg-white d-flex justify-content-center align-items-center">
+          <div class="p-4 rounded-4 shadow-sm bg-white">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-2">
           <div class="d-flex align-items-center gap-2">
