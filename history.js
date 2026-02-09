@@ -31,10 +31,10 @@ function tampilkanHistory() {
 
       data.forEach(item => {
         const card = document.createElement("div");
-        card.className = "col-12";
+        card.className = "col-12 col-md-8 col-lg-6 mb-3";
 
         card.innerHTML = `
-          <div class="p-2 rounded-4 shadow-sm bg-white w-100 m-auto">
+          <div class="p-4 rounded-4 shadow-sm bg-white w-100 m-auto">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-2">
           <div class="d-flex align-items-center gap-2">
