@@ -310,6 +310,10 @@
       animation-delay: 0.5s;
     }
     
+    .hyperlink {
+      text-align: center;
+    }
+    
     @keyframes rotation {
       0% {
         transform: rotate(0deg);
