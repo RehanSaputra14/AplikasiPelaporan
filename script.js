@@ -4,12 +4,15 @@ const scriptURL = "https://script.google.com/macros/s/AKfycbyoagib6o8CG-OmUGs7Bc
 function kirimData() {
 
   const data = {
+    user_id: getUserId(),
+    waktu: new Date().toLocaleString(),
     nama: document.getElementById("nama").value,
     kelas: document.getElementById("kelas").value,
     judul: document.getElementById("judul").value,
     kategori: document.getElementById("kategori").value,
     lokasi: document.getElementById("lokasi").value,
-    deskripsi: document.getElementById("deskripsi").value
+    deskripsi: document.getElementById("deskripsi").value,
+    status: "Pending"
   };
 
   fetch(scriptURL, {
