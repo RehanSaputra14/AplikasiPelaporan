@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", tampilkanHistory);
 function statusBadge(status) {
   const s = String(status).toLowerCase();
 
-  if (s === "done") return "bg-success";
-  if (s === "pending") return "bg-warning";
-  if (s === "reject") return "bg-danger";
+  if (s === "done") return "bg-success px-4 py-2";
+  if (s === "pending") return "bg-warning text-dark  px-3 py-2";
+  if (s === "reject") return "bg-danger px-3 py-2";
 
   return "bg-secondary";
 }
@@ -42,8 +42,8 @@ function tampilkanHistory() {
             <small class="text-muted">${item.waktu}</small>
           </div>
 
-          <span class="badge ${statusBadge(item.status)}">
-            ${item.status}
+          <span class="badge rounded-pill ${statusBadge(item.status)}">
+            <i class="bi bi-clock me-1"></i> ${item.status}
           </span>
         </div>
 
