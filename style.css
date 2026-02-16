@@ -330,3 +330,13 @@
         transform: scale(1);
       }
     } 
+    
+/* ----------------------------------------------
+    Halaman History
+-----------------------------------------------*/
+    .h-history {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
