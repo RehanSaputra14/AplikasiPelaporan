@@ -35,12 +35,20 @@ function kirimData() {
     // Simpan ke local storage
     simpanKeLocalStorage(data);
     loadingOverlay.style.display = "none";
-    alert("Laporan berhasil dikirim. Terima kasih 🙏");
+    Swal.fire({
+      title: "Berhasil!",
+      text: "Laporan berhasil dikirim",
+      icon: "success"
+    });
     document.getElementById("LaporanForm").reset();
   })
   .catch(err => {
     loadingOverlay.style.display = "none";
-    alert("Gagal mengirim laporan!");
+    Swal.fire({
+      title: "Error!",
+      text: "Terjadi kesalahan",
+      icon: "error"
+    });
     console.error(err);
   });
 }
