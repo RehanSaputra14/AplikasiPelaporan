@@ -12,6 +12,16 @@ function statusBadge(status) {
   return "bg-secondary";
 }
 
+function statusIcon(status) {
+  const s = String(status).toLowerCase();
+
+  if (s === "done") return "bi-check-circle";
+  if (s === "pending") return "bi-clock";
+  if (s === "reject") return "bi-x-circle";
+
+  return "bi-question-circle-fill";
+}
+
 function tampilkanHistory() {
   const userId = localStorage.getItem("user_id");
   if (!userId) return;
@@ -43,7 +53,7 @@ function tampilkanHistory() {
           </div>
 
           <span class="badge rounded-pill ${statusBadge(item.status)}">
-            <i class="bi bi-clock me-1"></i> ${item.status}
+            <i class="bi ${statusIcon(item.status)} me-1"></i> ${item.status}
           </span>
         </div>
 
