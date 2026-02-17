@@ -42,6 +42,11 @@
   <div class="wrapper fade-in d-flex justify-content-center p-2">
     <div class="content">
       <div class="lapor-card h-history p-4 mt-6 shadow-sm">
+        <a href="index.html" 
+           class="btn btn-outline-primary px-3 py-1 back-fixed">
+          <i class="bi bi-arrow-left"></i>
+        </a>
+
         <h2 class="fw-bold mb-2">Laporan Saya</h2>
         <p class="text-muted">
           Lihat Status Hasil Laporan Anda.
@@ -49,6 +54,16 @@
         <a href="laporan.html" class="btn btn-primary w-50">
           Kirim Laporan Baru
         </a>
+      </div>
+      <div class="row my-3">
+        <div class="col-md-4 mx-auto w-75">
+          <select id="filterStatus" class="form-select">
+            <option value="all">Semua Status</option>
+            <option value="Pending">Pending</option>
+            <option value="Done">Done</option>
+            <option value="reject">Reject</option>
+          </select>
+        </div>
       </div>
       <div class="container my-4 fade-in">
         <div class="row justify-content-center" id="historyContainer"></div>
