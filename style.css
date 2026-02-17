@@ -340,3 +340,25 @@
       flex-direction: column;
       align-items: center;
     }
+    
+    .back-fixed {
+      position: fixed;
+      top: 5.0rem;
+      left: 20px;
+      z-index: 999;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .history-card {
+      opacity: 1;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+    
+    .history-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
