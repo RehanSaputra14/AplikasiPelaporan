@@ -1,12 +1,21 @@
 const scriptURL = "https://script.google.com/macros/s/AKfycbyoagib6o8CG-OmUGs7BchmYSNdgPd_gbvUMk6-KjsR7hLpx-2msFYUJDfbfgqKN6CeZg/exec";
 
-document.addEventListener("DOMContentLoaded", tampilkanHistory);
+let semuaData = [];
+
+document.addEventListener("DOMContentLoaded", () => {
+  tampilkanHistory();
+
+  const filter = document.getElementById("filterStatus");
+  if (filter) {
+    filter.addEventListener("change", filterData);
+  }
+});
 
 function statusBadge(status) {
   const s = String(status).toLowerCase();
 
   if (s === "done") return "bg-success px-4 py-2";
-  if (s === "pending") return "bg-warning text-dark  px-3 py-2";
+  if (s === "pending") return "bg-warning text-dark px-3 py-2";
   if (s === "reject") return "bg-danger px-3 py-2";
 
   return "bg-secondary";
@@ -29,23 +38,28 @@ function tampilkanHistory() {
   fetch(`${scriptURL}?user_id=${userId}`)
     .then(res => res.json())
     .then(data => {
-      const container = document.getElementById("historyContainer");
-      if (!container) return;
+      semuaData = data;
+      renderData(data);
+    });
+}
 
-      container.innerHTML = "";
+function renderData(data) {
+  const container = document.getElementById("historyContainer");
+  if (!container) return;
 
-      if (data.length === 0) {
-        container.innerHTML = "<p class='text-muted'>Belum ada laporan.</p>";
-        return;
-      }
+  container.innerHTML = "";
 
-      data.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "col-12 col-md-8 col-lg-6 mb-3";
+  if (data.length === 0) {
+    container.innerHTML = "<p class='text-muted text-center'>Belum ada laporan.</p>";
+    return;
+  }
 
-        card.innerHTML = `
-          <div class="p-4 rounded-4 shadow-sm bg-white w-100 m-auto">
-        <!-- Header -->
+  data.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.className = "col-12 col-md-8 col-lg-6 mb-3 history-card";
+
+    card.innerHTML = `
+      <div class="p-4 rounded-4 shadow-sm bg-white w-100 m-auto">
         <div class="d-flex justify-content-between align-items-center mb-2">
           <div class="d-flex align-items-center gap-2">
             <span class="badge border border-dark text-dark">${item.kategori}</span>
@@ -57,21 +71,37 @@ function tampilkanHistory() {
           </span>
         </div>
 
-        <!-- Judul -->
         <h4 class="fw-bold mb-2">${item.judul}</h4>
-
-        <!-- Deskripsi -->
         <p class="text-muted mb-3">${item.deskripsi}</p>
 
-        <!-- Lokasi -->
         <div class="d-inline-flex align-items-center gap-2 px-3 py-2 bg-light rounded-pill">
           <i class="bi bi-geo-alt-fill text-primary"></i>
           <span>${item.lokasi}</span>
         </div>
       </div>
-        `;
+    `;
 
-        container.appendChild(card);
-      });
-    });
+    container.appendChild(card);
+
+    // 🎬 Animasi bertahap
+    setTimeout(() => {
+      card.classList.add("show");
+    }, index * 120);
+  });
 }
+
+function filterData() {
+  const value = document.getElementById("filterStatus").value.toLowerCase().trim();
+
+  if (value === "all") {
+    renderData(semuaData);
+    return;
+  }
+
+  const filtered = semuaData.filter(item =>
+    String(item.status).toLowerCase().trim() === value
+  );
+
+  renderData(filtered);
+}
+
