@@ -200,6 +200,35 @@
     .content {
       flex: 1; /* Mengambil semua ruang sisa agar footer terdorong ke bawah */
     }
+    
+    .bg-gr {
+      border-radius: 16px;
+      background: linear-gradient(135deg, #f0f4ff, #e6f0ff);
+    }
+    
+    .feature-card {
+      background: #ffffff;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .icon-wrapper {
+      width: 60px;
+      height: 60px;
+      margin: auto;
+      border-radius: 12px;
+      background: #e9f2ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0d6efd;
+    }
 
     footer {
       text-align: center;
