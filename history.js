@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function statusBadge(status) {
   const s = String(status).toLowerCase();
 
-  if (s === "done") return "bg-success px-4 py-2";
-  if (s === "pending") return "bg-warning text-dark px-3 py-2";
-  if (s === "reject") return "bg-danger px-3 py-2";
+  if (s === "selesai") return "bg-success px-4 py-2";
+  if (s === "diproses") return "bg-warning text-dark px-3 py-2";
+  if (s === "ditolak") return "bg-danger px-3 py-2";
 
   return "bg-secondary";
 }
@@ -24,9 +24,9 @@ function statusBadge(status) {
 function statusIcon(status) {
   const s = String(status).toLowerCase();
 
-  if (s === "done") return "bi-check-circle";
-  if (s === "pending") return "bi-clock";
-  if (s === "reject") return "bi-x-circle";
+  if (s === "selesai") return "bi-check-circle";
+  if (s === "diproses") return "bi-clock";
+  if (s === "ditolak") return "bi-x-circle";
 
   return "bi-question-circle-fill";
 }
